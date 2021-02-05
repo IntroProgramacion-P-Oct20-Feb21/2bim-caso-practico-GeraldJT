@@ -21,13 +21,8 @@ public class Código {
         Scanner entrada = new Scanner(System.in);
         boolean bandera = true;
         int opcion;
-        String salida;
-        String sa;
+        int salida;
         int contador = 0;
-        String facebook = "";
-        String whatsapp = "";
-        String signal = "";
-        String flickr = "";
         while (bandera == true) {
             System.out.println("Ingrese 1 para crear una cuenta de Facebook\n"+
                     "Ingrese 2 para crear una cuenta en Twitter\n"+
@@ -37,46 +32,49 @@ public class Código {
                     "Ingrese 6 para crear una cuenta en Instagram\n"+
                     "Ingrese 7 para crear una cuenta en Flickr\n");
             opcion = entrada.nextInt();
-            if(opcion == 1){
-                facebook = crearFacebook();
-            }else{
-                if(opcion == 2){
-                    crearTwitter();
+            if (opcion <= 7){
+                if(opcion == 1){
+                    System.out.println(crearFacebook()); 
                 }else{
-                    if(opcion == 3){
-                        whatsapp = crearWhatsapp();
+                    if(opcion == 2){
+                        crearTwitter();
                     }else{
-                        if(opcion == 4){
-                            crearTelegram();
+                        if(opcion == 3){
+                            System.out.println(crearWhatsapp());
                         }else{
-                            if(opcion == 5){
-                                signal = crearSignal();
+                            if(opcion == 4){
+                            crearTelegram();
                             }else{
-                                if(opcion == 6){
-                                    crearInstagram();
+                                if(opcion == 5){
+                                    System.out.println(crearSignal());
                                 }else{
-                                    if(opcion == 7){
-                                        flickr = crearFlickr();
+                                    if(opcion == 6){
+                                        crearInstagram();
                                     }else{
-                                        System.out.println("Opcion incorrecta");
+                                        if(opcion == 7){
+                                            System.out.println(crearFlickr());
+                                       
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+                contador = contador + 1;
+            }else{
+            System.out.println("Opcion incorrecta");
             }
-            contador = contador + 1;
             entrada.nextLine();
-            System.out.println("Ponga si para dejar de crear cuentas");
-            sa = entrada.nextLine();
-            salida = sa.toLowerCase();
-            if(salida.equals("si")){
+            System.out.println("\"Ingrese *1* si quiere seguir en el ciclo o *2*"
+                    + " si quiere salir del ciclo:\\n \"");
+            salida = entrada.nextInt();
+            if(salida == 2){
                 bandera = false;
             }
+            obtenerMensaje(contador);
         }
-        System.out.printf(facebook + whatsapp + signal + flickr);
-        obtenerMensaje(contador);
+
     }
     public static String crearFacebook(){
         Scanner entrada = new Scanner(System.in);
@@ -97,9 +95,9 @@ public class Código {
         pais = entrada.nextLine();
         System.out.println("Ingrese su correo");
         correo = entrada.nextLine();
-        cadena = String.format("%s\tFacebook\nUsuario: %s\nEdad= %d\n"
-                + "Ciudad: %s\nPais: %s\nCorreo: %s\n", cadena, usuario,
-                edad, ciudad, pais, correo);
+        cadena = String.format("El nombre del usuario es: %s, tiene una edad de:"
+                + " %d años, vive en la ciudad de: %s, en país de: %s, su correo "
+                + "eletrónico es: %s", usuario, edad, ciudad, pais, correo); 
         return cadena;
     }
     public static void crearTwitter(){
@@ -125,14 +123,15 @@ public class Código {
         ciudad = entrada.nextLine();
         System.out.println("Ingrese el nombre de su pais");
         pais = entrada.nextLine();
-        System.out.println("Ingtese su idioma");
+        System.out.println("Ingrese su idioma");
         idioma = entrada.nextLine();
         System.out.println("Ingrese su correo");
         correo = entrada.nextLine();
-        System.out.printf("\tTwitter\nUsuario: %s\nNombres: %s\nApellidos: %s\n"
-                + "Edad: %d\nCiudad: %s\nPais: %s\nIdioma: %s\nCorreo: %s\n",
-                usuario, nombre, apellido, edad, ciudad, pais, idioma,
-                correo);
+        System.out.printf("El nombre del usuario es: %s, sus nombres son: %s, "
+                + "sus apellidos son: %s tiene una edad de: %d años, vive en la"
+                + " ciudad de: %s, en el país: %s, su idioma es: %s correo"
+                + " eletrónico es: %s\n",usuario, nombre, apellido, edad, ciudad,
+                idioma, pais, correo);
     }
     public static String crearWhatsapp(){
         Scanner entrada = new Scanner(System.in);
@@ -153,9 +152,9 @@ public class Código {
         ciudad = entrada.nextLine();
         System.out.println("Ingrese el nombre de su pais");
         pais = entrada.nextLine();
-        cadena = String.format("%s\tWhatsapp\nUsuario: %s\nNumero: de telefono:"
-                + " %d\nEdad: %d\nCiudad: %s\nPais: %s\n", cadena, usuario,
-                numero, edad, ciudad, pais);
+        cadena = String.format("El nombre del usuario es: %s, su número de "
+                + "celular es: %d, tiene una edad de: %d años, vive en la ciudad"
+                + " de: %s, en país de: %s", usuario, numero, edad, ciudad, pais);
         return cadena;
     }
     public static void crearTelegram(){
@@ -176,9 +175,9 @@ public class Código {
         pais = entrada.nextLine();
         System.out.println("Ingrese el area de interés");
         area = entrada.nextLine();
-        System.out.printf("\tTelegram\nUsudario: %s\nNumero de telefono: %d\n"
-                + "Ciudad: %s\nPais: %s\nArea de interés: %s\n", usuario,
-                numero, ciudad, pais, area);
+        System.out.printf("El nombre del usuario es: %s, su número de celular es:"
+                + " %d, vive en la ciudad de: %s, en país de: %s y su interés "
+                + "peronal es: %s\n", usuario, numero, ciudad, pais, area);
     }
     public static String crearSignal(){
         Scanner entrada = new Scanner(System.in);
@@ -199,9 +198,9 @@ public class Código {
         pais = entrada.nextLine();
         System.out.println("Ingrese su hobby principal");
         hobby = entrada.nextLine();
-        cadena = String.format("%s\tSignal\nUsuario: %s\nNumero de telefono:"
-                + " %d\nCiudad: %s\nPais: %s\nHobby principal: %s\n", cadena,
-                usuario, numero, ciudad, pais, hobby);
+        cadena = String.format("El nombre del usuario es: %s, su número de "
+                + "celular es: %d, vive en la ciudad de: %s, en país de: %s, su "
+                + "hobby favorito es: %s", usuario, numero, ciudad, pais, hobby);
         return cadena;
     }
     public static void crearInstagram(){
@@ -219,8 +218,9 @@ public class Código {
         entrada.nextLine();
         System.out.println("Ingrese su correo");
         correo = entrada.nextLine();
-        System.out.printf("\tInstagram\nUsuario: %s\nCiudad: %s\nEdad: %d\n"
-                + "Correo: %s\n", usuario, ciudad, edad, correo);
+        System.out.printf("El nombre del usuario es: %s, vive en la ciudad de: %s,"
+                + " tiene una edad de: %d años, su correo es: %s\n",
+                usuario, ciudad, edad, correo);
     }
     public static String crearFlickr(){
         Scanner entrada = new Scanner(System.in);
@@ -231,8 +231,8 @@ public class Código {
         usuario = entrada.nextLine();
         System.out.println("Ingrese su correo");
         correo = entrada.nextLine();
-        cadena = String.format("%s\tFlickr\nUsuario: %s\nCorreo: %s", cadena,
-                usuario, correo);
+        cadena = String.format("El nombre del usuario es: %s, su correo "
+                + "electronico es: %s", usuario, correo);
         return cadena;
     }
     public static void obtenerMensaje(int nCuentas){
